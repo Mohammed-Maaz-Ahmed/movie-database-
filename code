@@ -4,28 +4,40 @@ conn = sqlite3.connect('movie.db')
 
 c = conn.cursor()
 
-c.execute(""" CREATE TABLE movies (
-            name text,
+#c.execute(""" CREATE TABLE movies (
+#           name text,
             actor text,
             actress text,
             directror text,
             y_o_r integer
             )""")
 
- c.execute("INSERT INTO movies VALUES('DON','Shahrukh Khan','Priyanka Chopra','Farhan Akhtar','2006') ")
- c.execute("INSERT INTO movies VALUES('GOLD','Akshay Kumar','Mouni Roy','Reema Katgi','2018') ")
- c.execute("INSERT INTO movies VALUES('MISSION IMPOSSIBLE','Tom Cruise','Vanessa Redgrave','Brain Palma','1996') ")
- c.execute("INSERT INTO movies VALUES('BAAHUBALI','Prabhas','Anushka Shetty','SS Rajamouli','2015') ")
- c.execute("INSERT INTO movies VALUES('DANGAL','Aamir Khan','Fathima Sana','Nitesh Tiwari','2016') ")
- c.execute("INSERT INTO movies VALUES('ROBOT','Rajnikanth','Aishwaraya Rai','S Shankar','2010') ")
+c.execute("INSERT INTO movies VALUES('DON','Shahrukh Khan','Priyanka Chopra','Farhan Akhtar','2006') ")
+c.execute("INSERT INTO movies VALUES('GOLD','Akshay Kumar','Mouni Roy','Reema Katgi','2018') ")
+c.execute("INSERT INTO movies VALUES('MISSION IMPOSSIBLE','Tom Cruise','Vanessa Redgrave','Brain Palma','1996') ")
+c.execute("INSERT INTO movies VALUES('BAAHUBALI','Prabhas','Anushka Shetty','SS Rajamouli','2015') ")
+c.execute("INSERT INTO movies VALUES('DANGAL','Aamir Khan','Fathima Sana','Nitesh Tiwari','2016') ")
+c.execute("INSERT INTO movies VALUES('ROBOT','Rajnikanth','Aishwaraya Rai','S Shankar','2010') ")
 
- c.execute("SELECT * FROM movies")
+#printing all movie details
+c.execute("SELECT * FROM movies")
 
- items = c.fetchall()
+items = c.fetchall()
 
- for item in items: 
+for item in items: 
     print(item)
+
+
+#printing movie details with a selected actor name
+c.execute("SELECT * FROM movies WHERE actor LIKE 'Rajnikanth' ")
+items = c.fetchall()
+
+for item in items: 
+    print(item)   
+     
+
 
 conn.commit()
 
 conn.close()
+
